@@ -1,3 +1,14 @@
+# Fork Notice
+This repo is a fork of https://github.com/arthenica/FFmpeg updated to support **FFmpeg 7.0**.
+
+Tested with Android:
+| Architecture | Status |
+|-|-|
+| x86 | not tested, may be broken |
+| x86_64 | doesn't build |
+| arm64-v8a | works |
+| armeabi-v7a | works |
+
 # FFmpegKit ![GitHub release](https://img.shields.io/badge/release-v6.0-blue.svg) ![Maven Central](https://img.shields.io/maven-central/v/com.arthenica/ffmpeg-kit-min) ![CocoaPods](https://img.shields.io/cocoapods/v/ffmpeg-kit-ios-min) ![pub](https://img.shields.io/pub/v/ffmpeg_kit_flutter.svg) ![npm](https://img.shields.io/npm/v/ffmpeg-kit-react-native.svg)
 
 <img src="https://github.com/arthenica/ffmpeg-kit/blob/main/docs/assets/ffmpeg-kit-icon-v9.png" width="240">
