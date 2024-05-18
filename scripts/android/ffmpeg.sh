@@ -478,6 +478,10 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
+patch "${BASEDIR}"/src/ffmpeg/libavcodec/mediacodecenc.c \
+      "${BASEDIR}"/tools/patch/cpp/ffmpeg/mediacodecenc.c.patch \
+      -N -r /dev/null || true 1>> build.log 2>&1
+
 if [[ -z ${NO_OUTPUT_REDIRECTION} ]]; then
   make -j$(get_cpu_count) 1>>"${BASEDIR}"/build.log 2>&1
 

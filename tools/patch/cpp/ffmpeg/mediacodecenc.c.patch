@@ -1,0 +1,32 @@
+diff --git a/libavcodec/mediacodecenc.c b/libavcodec/mediacodecenc.c
+index 984014f..f2e5ab1 100644
+--- a/libavcodec/mediacodecenc.c
++++ b/libavcodec/mediacodecenc.c
+@@ -198,19 +198,14 @@ static av_cold int mediacodec_init(AVCodecContext *avctx)
+     }
+ 
+     ff_AMediaFormat_setString(format, "mime", codec_mime);
+-    // Workaround the alignment requirement of mediacodec. We can't do it
+-    // silently for AV_PIX_FMT_MEDIACODEC.
+-    if (avctx->pix_fmt != AV_PIX_FMT_MEDIACODEC) {
+-        s->width = FFALIGN(avctx->width, 16);
+-        s->height = FFALIGN(avctx->height, 16);
+-    } else {
+-        s->width = avctx->width;
+-        s->height = avctx->height;
+-        if (s->width % 16 || s->height % 16)
+-            av_log(avctx, AV_LOG_WARNING,
+-                    "Video size %dx%d isn't align to 16, it may have device compatibility issue\n",
+-                    s->width, s->height);
+-    }
++
++    s->width = avctx->width;
++    s->height = avctx->height;
++    if (s->width % 16 || s->height % 16)
++        av_log(avctx, AV_LOG_WARNING,
++                "Video size %dx%d isn't align to 16, it may have device compatibility issue\n",
++                s->width, s->height);
++
+     ff_AMediaFormat_setInt32(format, "width", s->width);
+     ff_AMediaFormat_setInt32(format, "height", s->height);
+ 
