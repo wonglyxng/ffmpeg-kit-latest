@@ -70,11 +70,12 @@ build_application_mk() {
     local LTS_BUILD_FLAG="-DFFMPEG_KIT_LTS "
   fi
 
-  if [[ ${ENABLED_LIBRARIES[$LIBRARY_X265]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_TESSERACT]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_OPENH264]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_SNAPPY]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_RUBBERBAND]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_ZIMG]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_SRT]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_CHROMAPRINT]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_LIBILBC]} -eq 1 ]] || [[ -n ${CUSTOM_LIBRARY_USES_CPP} ]]; then
-    local APP_STL="c++_shared"
-  else
-    local APP_STL="none"
-  fi
+  # if [[ ${ENABLED_LIBRARIES[$LIBRARY_X265]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_TESSERACT]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_OPENH264]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_SNAPPY]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_RUBBERBAND]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_ZIMG]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_SRT]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_CHROMAPRINT]} -eq 1 ]] || [[ ${ENABLED_LIBRARIES[$LIBRARY_LIBILBC]} -eq 1 ]] || [[ -n ${CUSTOM_LIBRARY_USES_CPP} ]]; then
+  #     local APP_STL="c++_shared"
+  # else
+  #     local APP_STL="none"
+  # fi
+  local APP_STL="c++_shared"
 
   local BUILD_DATE="-DFFMPEG_KIT_BUILD_DATE=$(date +%Y%m%d 2>>"${BASEDIR}"/build.log)"
 
