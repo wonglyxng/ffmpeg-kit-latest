@@ -19,7 +19,7 @@ mv prebuilt/bundle-android-aar-lts/ffmpeg-kit/ffmpeg-kit.aar ffmpeg-kit-https.aa
 mv prebuilt/bundle-android-aar-lts/ffmpeg-kit/ffmpeg-kit.aar ffmpeg-kit-https-gpl.aar
 
 ./android.sh --lts --enable-android-media-codec --enable-android-zlib --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64 \
-  --enable-{lame,opencore-amr,opus,shine,soxr,speex,twolame}
+  --enable-{opencore-amr,opus,shine,soxr,speex,twolame}
 mv prebuilt/bundle-android-aar-lts/ffmpeg-kit/ffmpeg-kit.aar ffmpeg-kit-audio.aar
 
 ./android.sh --lts --enable-android-media-codec --enable-android-zlib --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64 \
