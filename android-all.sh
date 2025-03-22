@@ -10,11 +10,11 @@ mv prebuilt/bundle-android-aar-lts/ffmpeg-kit/ffmpeg-kit.aar ffmpeg-kit-min.aar
 mv prebuilt/bundle-android-aar-lts/ffmpeg-kit/ffmpeg-kit.aar ffmpeg-kit-min-gpl.aar
 
 ./android.sh --lts --enable-android-media-codec --enable-android-zlib --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64 \
-  --enable-{gmp,gnutls}
+  --enable-{gmp,openssl}
 mv prebuilt/bundle-android-aar-lts/ffmpeg-kit/ffmpeg-kit.aar ffmpeg-kit-https.aar
 
 ./android.sh --lts --enable-android-media-codec --enable-android-zlib --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64 \
-  --enable-{gmp,gnutls} \
+  --enable-{gmp,openssl} \
   --enable-{gpl,x264,x265,xvidcore,libvidstab}
 mv prebuilt/bundle-android-aar-lts/ffmpeg-kit/ffmpeg-kit.aar ffmpeg-kit-https-gpl.aar
 
