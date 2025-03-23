@@ -2,6 +2,8 @@
 
 set -euxo pipefail
 
+source ./aclocal.sh 
+
 ./android.sh --lts --enable-android-media-codec --enable-android-zlib --disable-arm-v7a --disable-arm-v7a-neon --disable-x86 --disable-x86-64
 mv prebuilt/bundle-android-aar-lts/ffmpeg-kit/ffmpeg-kit.aar ffmpeg-kit-min.aar
 

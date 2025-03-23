@@ -31,14 +31,40 @@ function install_automake() {
             ./configure
             make && make install
             echo -e "\e[1;39m[   \e[1;32mOK\e[39m   ] automake-${VERSION} installed\e[0;39m"
-
+            
+            # 安装成功后，确保创建符号链接
+            create_symlinks ${VERSION}
+            
+            return 0
         else
             echo -e "\e[1;39m[   \e[31mError\e[39m   ] cannot fetch file from ftp://ftp.gnu.org/gnu/automake/ \e[0;39m"
             exit 1
     fi
 }
 
-# 主要逻辑
+# 创建符号链接
+function create_symlinks() {
+    local VERSION=${1}
+    
+    # 创建aclocal和aclocal-VERSION的符号链接
+    if [ -f /usr/local/bin/aclocal-${VERSION} ] && [ ! -f /usr/bin/aclocal-${VERSION} ]; then
+        ln -sf /usr/local/bin/aclocal-${VERSION} /usr/bin/aclocal-${VERSION}
+        echo "创建了从 /usr/bin/aclocal-${VERSION} 到 /usr/local/bin/aclocal-${VERSION} 的符号链接"
+    fi
+    
+    # 如果安装在其他位置，也尝试创建符号链接
+    if [ -f /usr/local/bin/aclocal ] && [ ! -f /usr/bin/aclocal-${VERSION} ]; then
+        ln -sf /usr/local/bin/aclocal /usr/bin/aclocal-${VERSION}
+        echo "创建了从 /usr/bin/aclocal-${VERSION} 到 /usr/local/bin/aclocal 的符号链接"
+    fi
+    
+    # 如果还是找不到，使用当前的aclocal创建符号链接
+    if [ ! -f /usr/bin/aclocal-${VERSION} ] && [ -f /usr/bin/aclocal ]; then
+        ln -sf /usr/bin/aclocal /usr/bin/aclocal-${VERSION}
+        echo "创建了从 /usr/bin/aclocal-${VERSION} 到 /usr/bin/aclocal 的符号链接"
+    fi
+}
+
 REQUIRED_VERSION="1.17"
 CURRENT_VERSION=$(check_aclocal_version)
 
@@ -54,7 +80,7 @@ else
     need_install=1
 fi
 
-# 如果还需要安装，则执行安装
+# 如果需要安装，则执行安装
 if [ $need_install -eq 1 ]; then
     install_automake $REQUIRED_VERSION
 fi
