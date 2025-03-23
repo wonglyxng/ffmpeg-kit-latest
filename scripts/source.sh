@@ -32,7 +32,7 @@ get_library_source() {
     SOURCE_TYPE="TAG"
     ;;
   ffmpeg)
-    SOURCE_REPO_URL="https://github.com/FFmpeg/FFmpeg"
+    SOURCE_REPO_URL="https://github.com/arthenica/FFmpeg"
     SOURCE_ID="n7.1.1"
     SOURCE_TYPE="TAG"
     ;;
